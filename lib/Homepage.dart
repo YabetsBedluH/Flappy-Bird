@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flappybird/barriers.dart';
 import 'package:flappybird/bird.dart';
 import 'package:flutter/material.dart';
 
@@ -45,23 +46,63 @@ class _HomepageState extends State<Homepage> {
       body: Column(
         children: [
           Expanded(
-            flex: 2,
-            child: GestureDetector(
-              onTap: () {
-                if (gameHasStarted) {
-                  jump();
-                } else {
-                  startGame();
-                }
-              },
-              child: AnimatedContainer(
-                alignment: Alignment(0, birdYaxis),
-                duration: const Duration(milliseconds: 0),
-                color: Colors.blue,
-                child: const Bird(),
-              ),
-            ),
-          ),
+              flex: 2,
+              child: Stack(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      if (gameHasStarted) {
+                        jump();
+                      } else {
+                        startGame();
+                      }
+                    },
+                    child: AnimatedContainer(
+                      alignment: Alignment(0, birdYaxis),
+                      duration: const Duration(milliseconds: 0),
+                      color: Colors.blue,
+                      child: const Bird(),
+                    ),
+                  ),
+                  Container(
+                    alignment: const Alignment(0, -0.3),
+                    child: gameHasStarted
+                        ? const Text("")
+                        : const Text(
+                            "T A P  T O  P L A Y",
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                  ),
+                  AnimatedContainer(
+                    alignment: const Alignment(0, 1.1),
+                    duration: const Duration(milliseconds: 0),
+                    child: const MyBarrier(
+                      size: 200.0,
+                    ),
+                  ),
+                  AnimatedContainer(
+                    alignment: const Alignment(0, -1.1),
+                    duration: const Duration(milliseconds: 0),
+                    child: const MyBarrier(
+                      size: 200.0,
+                    ),
+                  ),
+                  AnimatedContainer(
+                    alignment: const Alignment(1, 1.1),
+                    duration: const Duration(milliseconds: 0),
+                    child: const MyBarrier(
+                      size: 150.0,
+                    ),
+                  ),
+                  AnimatedContainer(
+                    alignment: const Alignment(1, -1.1),
+                    duration: const Duration(milliseconds: 0),
+                    child: const MyBarrier(
+                      size: 250.0,
+                    ),
+                  )
+                ],
+              )),
           Container(
             height: 15,
             color: Colors.green,
