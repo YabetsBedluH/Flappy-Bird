@@ -58,13 +58,54 @@ class _HomepageState extends State<Homepage> {
                 alignment: Alignment(0, birdYaxis),
                 duration: const Duration(milliseconds: 0),
                 color: Colors.blue,
-                child: Bird(),
+                child: const Bird(),
               ),
             ),
           ),
+          Container(
+            height: 15,
+            color: Colors.green,
+          ),
           Expanded(
             child: Container(
-              color: Colors.green,
+              color: Colors.brown,
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "SCORE",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "0",
+                        style: TextStyle(color: Colors.white, fontSize: 35),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "BEST",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "10",
+                        style: TextStyle(color: Colors.white, fontSize: 35),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           )
         ],
